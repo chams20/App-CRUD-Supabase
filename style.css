@@ -1,0 +1,23 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  background: white;
+  border: none;
+}
+
+button.btn {
+  font-weight: bold;
+  border-radius: 30px;
+}
+
+#signup-message,
+#signin-message,
+#profile-message {
+  font-weight: 500;
+}
+
+.info-user {
+    width: 380px;
+}
