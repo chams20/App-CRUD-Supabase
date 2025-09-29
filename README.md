@@ -23,6 +23,39 @@ Créer une application web simple utilisant Supabase pour gérer des profils uti
 
 Créer une table `profiles` pour stocker les informations des utilisateurs.
 
+## Pour ma correction, la table est créée et voici les commandes pour les Policies
+create table profiles (
+  id uuid references auth.users on delete cascade not null primary key,
+  first_name text not null,
+  last_name text not null,
+  phone text,
+  address text,
+  created_at timestamp with time zone default now(),
+  updated_at timestamp with time zone default now()
+);
+
+
+
+--- policies :
+
+--- pour la récupération
+create policy "Users can select their own profile"
+  on profiles for select
+  using (auth.uid() = id);
+
+--- pour la mise à jour
+create policy "Users can update their own profile"
+  on profiles for update
+  using (auth.uid() = id);
+
+
+--- pour l'ajout
+create policy "Users can insert their own profile"
+  on profiles for insert
+  with check (auth.uid() = id);
+
+
+
 ### 2. Fonctionnalités à implémenter
 
 #### Authentification (obligatoire)
@@ -43,12 +76,6 @@ Créer une table `profiles` pour stocker les informations des utilisateurs.
 - Gestion des états de chargement
 
 
-### 5. Ressources utiles
-
-- [Documentation officielle Supabase](https://supabase.com/docs)
-- [Guide d'authentification Supabase](https://supabase.com/docs/guides/auth)
-- [Documentation JavaScript Client](https://supabase.com/docs/reference/javascript)
-- [Guide Row Level Security](https://supabase.com/docs/guides/auth/row-level-security)
 
 
 ---
