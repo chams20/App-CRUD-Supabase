@@ -1,5 +1,8 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;          /* hauteur min. = 100% de l'écran */
+  display: flex;              /* active flexbox */
+  flex-direction: column;     /* empile les éléments en colonne */
 }
 
 .card {
@@ -19,5 +22,10 @@ button.btn {
 }
 
 .info-user {
-    width: 380px;
+  width: 380px;
+}
+
+/* Footer collé en bas */
+footer {
+  margin-top: auto;           /* pousse le footer en bas */
 }
